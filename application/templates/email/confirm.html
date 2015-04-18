@@ -1,0 +1,9 @@
+<p>Dear {{ user.username }}</p>
+<p>Welcome to WebChat!</p>
+<p>To confirm your account please click on the following link:</p>
+<p><a href="{{ url_for("confirm", token=token, _external=True) }}">Click here</a></p>
+<p>Alternatively, you can paste the following link in your brower address bar:</p>
+<p>{{ url_for("confirm", token=token, _external=True) }}</p>
+<p>Sincerely,</p>
+<p>The WebChat team</p>
+<p>Note: replies to this email address are not monitored.</p>

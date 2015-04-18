@@ -1,0 +1,13 @@
+flask
+flask-mongoengine
+flask-bootstrap
+flask-login
+flask-wtf
+flask-mail
+werkzeug
+itsdangerous
+flask-script
+pymongo==2.8
+celery
+flask-socketio
+redis

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Webchat - room{{ room_id }}{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js', _external=True) }}"></script>
+{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/main.css', _external=True) }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for info in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ info }}
+    </div>
+    {% endfor %}
+    {% block page_content %}
+    <div id="header">
+        <div class="inner">
+            <div id="logo"><a href="/room/{{ room_id }}">{{ room_info["title"] }}</a></div>
+            <div class="user_info"> current user:<span id="username">{{ user_name }}</span></div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="room_online_user" class="user_status">
+        <p>users in this room:</p>
+        <div class="user_list" id="users">
+        {% for user in users %}
+        <span>{{ user }}</span>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div id="chat_content">
+         <table style="width:100%; border:1px solid #ccc; padding:5px">
+            <thead>
+            <tr>
+                <th>user</th>
+                <th>content</th>
+                <th>time</th>
+            </tr>
+            </thead>
+
+            <tbody id="message_list">
+            {% for item in room_content_list %}
+            <tr>
+                <td>{{item.user}}</td>
+                <td>{{item.content}}</td>
+                <td>{{item.created}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <form id="post_content" action="#" method="POST">
+        <input id="message_content" name="message_content" type="TEXT" style="width:300px">
+        <input id="room_id" type="hidden" name="room_id" value="{{room_id}}">
+        <input type="submit" value="Send message">
+    </form>
+    <br>
+    <form id="leave" action="#" method="POST">
+        <input type="submit" value="Leave the room">
+    </form>
+    {% endblock %}
+{% endblock %}
