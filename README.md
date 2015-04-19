@@ -1,6 +1,15 @@
 # WebChat
 这是一个用于学习目的的Python聊天室应用,目前版本为1.0
 
+登陆界面:
+
+![login](https://geekpics.net/images/2015/04/19/iroQvOj.png)
+
+聊天室界面:
+
+![room](https://geekpics.net/images/2015/04/19/rYNVLjh.png)
+
+
 大体架构:
 * 后端框架使用flask框架.我写这个应用主要出于学习目的,flask是轻量级的框架,相比于我之前尝试过的Rails来说,我认为我学习到了更本质的东西,Rails的抽象程度过高.
 * 后端数据存储使用了mongoDB和Redis.储存用户信息使用了mongoDB,储存聊天记录和聊天室信息使用了Redis.主要考虑到并没有将这些信息组织成表的需求,而且使用NoSQL数据库随时可以轻松修改文档结构,非常方便.使用Redis主要因为Redis更偏重内存数据存储,聊天记录的更新速度较高,而且Redis的内置数据结构更丰富.
@@ -18,7 +27,7 @@
 *   使用浏览器访问127.0.0.1:5000即可
 
 TODO:
-* 多用户多聊天室聊天过程中有时存在用户列表中出现undefine用户的情况.
+* 用户列表中出现undefined用户的情况.
 * 还没有实现REST架构的API.
 * 对使用Gunicorn进行部署,Nginx做反向代理还不熟悉.
 * 前端有待改进. 

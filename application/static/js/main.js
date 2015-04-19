@@ -12,7 +12,9 @@ $(document).ready(function(){
     });
 
     socket.on("new_user", function(msg) {
-        $("#users").append("<span>"+msg["user"]+"</span>")
+        if (document.getElementById("username").innerHTML != msg["user"]) {
+            $("#users").append("<span>"+msg["user"]+"</span>");
+        }
     });
     socket.on("new_message", function(msg) {
         $("#message_list").append("<tr><td>"+msg["user"]+"</td><td>"+msg["data"]+"</td><td>"+msg["time"]+"</td></tr>");

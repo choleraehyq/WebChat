@@ -113,9 +113,6 @@ def unconfirmed():
 def on_new_user(data):
     if current_user.username == data["user_name"]:
         join_room(session["room"])
-    else:
-        room_online_user_channel = app.config["ROOM_ONLINE_USER_CHANNEL"].format(room=session["room"])
-        rc.zadd(room_online_user_channel, data["user_name"], time.time())
     emit("new_user", {"name": data["user_name"]}, room=session["room"])
 
 @socketio.on("leave")
