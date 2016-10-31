@@ -1,6 +1,9 @@
 # WebChat
 这是一个用于学习目的的Python聊天室应用,目前版本为1.0
 
+## 注意：
+此项目仅用于学习目的，有很多 bug，且作者已停止维护，请谨慎使用！！！！！
+
 登陆界面:
 
 ![login](https://geekpics.net/images/2015/04/19/iroQvOj.png)
